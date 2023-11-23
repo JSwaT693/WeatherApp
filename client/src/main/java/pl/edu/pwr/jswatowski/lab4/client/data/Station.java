@@ -3,7 +3,7 @@ package pl.edu.pwr.jswatowski.lab4.client.data;
 import com.google.gson.annotations.SerializedName;
 
 public class Station {
-    public Station(int id, String name, String date, int time, double temperature, int windSpeed, 
+    public Station(int id, String name, String date, int time, double temperature, int windSpeed,
                    int windDirection, double humidity, double rainTotal, double pressure) {
         this.id = id;
         this.name = name;
@@ -15,6 +15,11 @@ public class Station {
         this.humidity = humidity;
         this.rainTotal = rainTotal;
         this.pressure = pressure;
+    }
+
+    public Station(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
     @SerializedName("id_stacji")

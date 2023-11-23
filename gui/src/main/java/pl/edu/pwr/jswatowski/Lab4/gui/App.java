@@ -22,8 +22,9 @@ public class App extends Application {
         DataBase db = new DataBase();
         db.addStations();
         List<Station> stationList = new ArrayList<>();
+        stationList = db.getStations();
         for (Station station : stationList) {
-            System.out.println(station);
+            System.out.println(station.getName());
         }
 
         //launch();
@@ -31,9 +32,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
+        stage.setTitle("Menu");
         stage.setScene(scene);
         stage.show();
     }

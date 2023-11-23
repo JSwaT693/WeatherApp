@@ -27,7 +27,7 @@ public class API {
                 Station[] stations = g.fromJson(responseBody, Station[].class);
                 return stations;
             } else {
-                System.out.println("Failed to fetch data. Status code: " + response.statusCode());
+                System.out.println("Nie udało się pobrać danych ze strony. Kod błędu: " + response.statusCode());
                 return null;
             }
         } catch (IOException | InterruptedException e) {
@@ -40,7 +40,7 @@ public class API {
         try {
             return new URI(url);
         } catch (URISyntaxException e) {
-            throw new IllegalArgumentException("Invalid URL: " + url, e);
+            throw new IllegalArgumentException("Niepoprawny URL: " + url, e);
         }
     }
 }
