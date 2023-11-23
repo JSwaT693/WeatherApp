@@ -110,7 +110,7 @@ public class DataBase {
         }
         return list;
     }
-    private List<Station> getIDsTowns() {
+    public List<Station> getIDsTownsList() {
         var list = new ArrayList<Station>();
         try {
             var result = statement.executeQuery(SELECT_ALL_QUERY);

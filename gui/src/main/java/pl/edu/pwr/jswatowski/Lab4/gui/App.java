@@ -18,16 +18,16 @@ import java.util.List;
  */
 public class App extends Application {
     public static void main( String[] args ) throws SQLException {
-        API api = new API();
-        DataBase db = new DataBase();
-        db.addStations();
-        List<Station> stationList = new ArrayList<>();
-        stationList = db.getStations();
-        for (Station station : stationList) {
-            System.out.println(station.getName());
-        }
+//        API api = new API();
+//        DataBase db = new DataBase();
+//        db.addStations();
+//        List<Station> stationList = new ArrayList<>();
+//        stationList = db.getStations();
+//        for (Station station : stationList) {
+//            System.out.println(station.getName());
+//        }
 
-        //launch();
+        launch();
     }
 
     @Override

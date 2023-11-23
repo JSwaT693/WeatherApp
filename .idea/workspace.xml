@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd76ecae-21d9-4222-a109-ab1e6b2d4b7c" name="Changes" comment="#1 before dataBase">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gui/src/main/java/pl/edu/pwr/jswatowski/Lab4/gui/MenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/gui/src/main/resources/menu.fxml" afterDir="false" />
+    <list default="true" id="dd76ecae-21d9-4222-a109-ab1e6b2d4b7c" name="Changes" comment="#2 with DataBase startingg gui">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/pl/edu/pwr/jswatowski/lab4/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/pl/edu/pwr/jswatowski/lab4/client/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/pl/edu/pwr/jswatowski/lab4/client/data/Station.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/pl/edu/pwr/jswatowski/lab4/client/data/Station.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/main/java/pl/edu/pwr/jswatowski/lab4/client/repository/API.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/pl/edu/pwr/jswatowski/lab4/client/repository/API.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/main/java/pl/edu/pwr/jswatowski/lab4/client/repository/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/main/java/pl/edu/pwr/jswatowski/lab4/client/repository/DataBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/edu/pwr/jswatowski/Lab4/gui/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/edu/pwr/jswatowski/Lab4/gui/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/edu/pwr/jswatowski/Lab4/gui/HelloControler.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/edu/pwr/jswatowski/Lab4/gui/HelloControler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui/src/main/resources/hello-view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/java/pl/edu/pwr/jswatowski/Lab4/gui/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/java/pl/edu/pwr/jswatowski/Lab4/gui/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/src/main/resources/menu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/gui/src/main/resources/menu.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,6 +50,7 @@
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.1484375",
     "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -106,7 +101,7 @@
       <workItem from="1700519639018" duration="7400000" />
       <workItem from="1700562396850" duration="19548000" />
       <workItem from="1700613186523" duration="217000" />
-      <workItem from="1700667190891" duration="18715000" />
+      <workItem from="1700667190891" duration="20091000" />
     </task>
     <task id="LOCAL-00001" summary="#1 before dataBase">
       <created>1700613238389</created>
@@ -115,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1700613238389</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="#2 with DataBase startingg gui">
+      <created>1700698233883</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1700698233883</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,7 +166,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="#1 before dataBase" />
-    <option name="LAST_COMMIT_MESSAGE" value="#1 before dataBase" />
+    <MESSAGE value="#2 with DataBase startingg gui" />
+    <option name="LAST_COMMIT_MESSAGE" value="#2 with DataBase startingg gui" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
