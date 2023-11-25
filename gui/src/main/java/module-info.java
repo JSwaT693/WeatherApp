@@ -4,6 +4,7 @@ module gui {
     requires javafx.fxml;
     requires java.sql;
 
+
     opens pl.edu.pwr.jswatowski.Lab4.gui to javafx.fxml;
     exports pl.edu.pwr.jswatowski.Lab4.gui;
 }

@@ -24,6 +24,7 @@ public class DataBase {
     private final static String FIELD_HUMIDITY = "humidity";
     private final static String FIELD_RAINTOT = "rainfallTotal";
     private final static String FIELD_PRESSURE = "pressure";
+    private final static String TEMP_TABLE_NAME = "temporaryTable";
     Connection connection = null;
     Statement statement = null;
     private final static String CREATE_TABLE_STATEMENT = String.format("CREATE TABLE %s "
@@ -52,6 +53,14 @@ public class DataBase {
 
     private final static String IDS_AND_TOWNS = String.format("SELECT %s, name FROM %s GROUP BY ROLLUP (%s, %s)"
             , FIELD_STATION_ID, TABLE_NAME, FIELD_STATION_ID, FIELD_NAME);
+
+    private final static String GET_DATA = String.format("SELECT %s, %s, %s, %s, %s, %s, %s, %s from %s WHERE %s = %%d"
+    , FIELD_DATE, FIELD_TIME, FIELD_TEMP, FIELD_WINDSPEED, FIELD_WINDDIR, FIELD_HUMIDITY, FIELD_RAINTOT, FIELD_PRESSURE, TABLE_NAME, FIELD_STATION_ID);
+
+    private final static String CREATE_TEMP_TABLE = String.format("CREATE TABLE temporaryTable(%s INT, %s VARCHAR(128))", FIELD_STATION_ID, FIELD_NAME);
+    private final static String DROP_TEMP_TABLE = String.format("DROP TABLE %s", TEMP_TABLE_NAME);
+
+    private Station station;
 
     public DataBase() throws SQLException {
         try {
@@ -113,7 +122,7 @@ public class DataBase {
     public List<Station> getIDsTownsList() {
         var list = new ArrayList<Station>();
         try {
-            var result = statement.executeQuery(SELECT_ALL_QUERY);
+            var result = statement.executeQuery(IDS_AND_TOWNS);
             while (result.next()) {
                 var id = result.getInt(FIELD_STATION_ID);
                 var name = result.getString(FIELD_NAME);
@@ -125,11 +134,48 @@ public class DataBase {
         return list;
     }
 
+    public List<Station> getStationData(Station station) {
+        var list = new ArrayList<Station>();
+        try {
+            var sql = String.format(Locale.ENGLISH, GET_DATA, station.getId());
+            var result = statement.executeQuery(sql);
+            while (result.next()) {
+                var date = result.getString(FIELD_DATE);
+                var time = result.getInt(FIELD_TIME);
+                var temp = result.getDouble(FIELD_TEMP);
+                var windSpeed = result.getInt(FIELD_WINDSPEED);
+                var windDir = result.getInt(FIELD_WINDDIR);
+                var humidity = result.getDouble(FIELD_HUMIDITY);
+                var rainTotal = result.getDouble(FIELD_RAINTOT);
+                var pressure = result.getDouble(FIELD_PRESSURE);
+                list.add(new Station(station.getId(), station.getName(), date, time, temp, windSpeed, windDir ,humidity, rainTotal, pressure));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return list;
+    }
+
+    private void saveStation(Station station) throws SQLException {
+        try {
+            connection = DriverManager.getConnection(DATABASE_URL);
+            statement = connection.createStatement();
+            if (doesTableExists(TEMP_TABLE_NAME, connection)) {
+                statement.execute(DROP_TEMP_TABLE);
+            }
+            statement.execute(CREATE_TEMP_TABLE);
+
+        } catch (SQLException e) {
+            Logger.getLogger(DataBase.class.getName()).log(Level.SEVERE, null, e);
+        }
+
+    }
+
     private static boolean doesTableExists(String tableName, Connection connection) throws SQLException {
         DatabaseMetaData meta = connection.getMetaData();
         ResultSet result = meta.getTables(null, null, tableName.toUpperCase(), null);
 
         return result.next();
     }
-
 }
