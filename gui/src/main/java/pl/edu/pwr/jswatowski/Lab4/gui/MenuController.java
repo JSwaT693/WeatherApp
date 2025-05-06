@@ -11,7 +11,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import pl.edu.pwr.jswatowski.lab4.client.data.Station;
 import pl.edu.pwr.jswatowski.lab4.client.repository.DataBase;
@@ -29,8 +28,6 @@ public class MenuController implements Initializable {
     private TableColumn<Station, Integer> idColumn;
     @FXML
     private TableColumn<Station, String> stationColumn;
-    @FXML
-    private Button button;
     ObservableList<Station> stationsList = FXCollections.observableList(dataBase.getIDsTownsList());
 
     public MenuController() throws SQLException {
@@ -48,9 +45,8 @@ public class MenuController implements Initializable {
     }
 
     @FXML
-    public void enter(ActionEvent actionEvent) throws IOException, SQLException {
+    public void enter(ActionEvent actionEvent) throws IOException {
         Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-        //var stage = (Stage) button.getScene().getWindow();
         var loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/data.fxml"));
         Parent root = loader.load();
@@ -61,6 +57,11 @@ public class MenuController implements Initializable {
 
         stage.setTitle("Data");
         stage.setScene(scene);
+    }
+    @FXML
+    public void refreshData(ActionEvent actionEvent) {
+        dataBase.addStations();
+        stationTableView.refresh();
     }
 
 }

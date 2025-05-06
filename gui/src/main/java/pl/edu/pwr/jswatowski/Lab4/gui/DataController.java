@@ -5,9 +5,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -18,10 +18,8 @@ import pl.edu.pwr.jswatowski.lab4.client.data.Station;
 import pl.edu.pwr.jswatowski.lab4.client.repository.DataBase;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.ResourceBundle;
+
 
 public class DataController{
     DataBase dataBase = new DataBase();
@@ -82,13 +80,31 @@ public class DataController{
         dataTable.setItems(dataList);
     }
 
-
     @FXML
     void goBack(ActionEvent event) throws IOException {
         Stage stage = (Stage) backBtn.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Menu");
+        stage.setScene(scene);
+    }
+
+    public void refreshData(ActionEvent actionEvent) {
+        dataBase.addStations();
+        getStation(selectedStation);
+        dataTable.refresh();
+    }
+
+    public void goToCharts(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        var loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/charts.fxml"));
+        Parent root = loader.load();
+        var scene = new Scene(root);
+
+        ChartsController controller = loader.getController();
+        controller.getStation(selectedStation, dataList);
+        stage.setTitle("Charts");
         stage.setScene(scene);
     }
 }
