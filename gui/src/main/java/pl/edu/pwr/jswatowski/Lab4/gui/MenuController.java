@@ -21,7 +21,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 public class MenuController implements Initializable {
-    private DataBase dataBase = new DataBase();
+    private final DataBase dataBase = new DataBase();
     @FXML
     private TableView<Station> stationTableView;
     @FXML

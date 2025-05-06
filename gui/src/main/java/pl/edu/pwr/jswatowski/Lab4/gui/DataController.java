@@ -58,7 +58,7 @@ public class DataController{
     private TableColumn<Station, Integer> windSpeedColumn;
     Station selectedStation;
     ObservableList<Station> dataList;
-    ;
+
     public DataController() throws SQLException {
     }
 
@@ -81,7 +81,7 @@ public class DataController{
     }
 
     @FXML
-    void goBack(ActionEvent event) throws IOException {
+    void goBack() throws IOException {
         Stage stage = (Stage) backBtn.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("/menu.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
@@ -89,7 +89,7 @@ public class DataController{
         stage.setScene(scene);
     }
 
-    public void refreshData(ActionEvent actionEvent) {
+    public void refreshData() {
         dataBase.addStations();
         getStation(selectedStation);
         dataTable.refresh();
